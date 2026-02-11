@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+      # --- 新增步骤：随机休眠 ---
+      # 随机延迟 1 到 600 秒（10分钟以内），让每天签到时间点都不固定
+      - name: Random Sleep
+        run: sleep $((1 + RANDOM % 600))
+      
       - uses: browser-actions/setup-chrome@v1
       - name: Check Chrome version
         run: chrome --version
